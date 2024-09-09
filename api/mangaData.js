@@ -14,7 +14,6 @@ const getManga = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-
 const deleteManga = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/Mangas/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -26,7 +25,6 @@ const deleteManga = (firebaseKey) => new Promise((resolve, reject) => {
     .then((data) => resolve((data)))
     .catch(reject);
 });
-
 
 const getSingleManga = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/Mangas/${firebaseKey}.json`, {
