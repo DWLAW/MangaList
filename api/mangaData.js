@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getManga = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas.json?orderBy="uid"&equalTo="${uid}"`, {
+const getManga = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/manga.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ const getManga = (uid) => new Promise((resolve, reject) => {
 });
 
 const deleteManga = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas/${firebaseKey}.json`, {
+  fetch(`${endpoint}/manga/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const deleteManga = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const getSingleManga = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas/${firebaseKey}.json`, {
+  fetch(`${endpoint}/manga/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const getSingleManga = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const createManga = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas.json`, {
+  fetch(`${endpoint}/manga.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const createManga = (payload) => new Promise((resolve, reject) => {
 });
 
 const updateManga = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas/${payload.firebaseKey}.json`, {
+  fetch(`${endpoint}/manga/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const updateManga = (payload) => new Promise((resolve, reject) => {
 });
 
 const getMangaByCategory = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas.json?orderBy="category_id"&equalTo="${firebaseKey}"`, {
+  fetch(`${endpoint}/manga.json?orderBy="category_id"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const getMangaByCategory = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const favoriteManga = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/Mangas.json?orderBy="uid"&equalTo="${uid}"`, {
+  fetch(`${endpoint}/manga.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

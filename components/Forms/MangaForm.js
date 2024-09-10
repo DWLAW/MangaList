@@ -5,8 +5,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { getCategories } from '../../api/categoryData';
 import { createManga, updateManga } from '../../api/mangaData';
+import getCategories from '../../api/categoryData';
 
 const initialState = {
   description: '',
@@ -23,7 +23,7 @@ function MangaForm({ obj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    getCategories(user.uid).then(setCategories);
+    getCategories().then(setCategories);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -79,7 +79,7 @@ function MangaForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* Category SELECT  */}
+      {/* category SELECT  */}
       <FloatingLabel controlId="floatingSelect" label="category">
         <Form.Select
           // aria-label="category"
@@ -122,12 +122,12 @@ function MangaForm({ obj }) {
         type="switch"
         id="favorite"
         name="favorite"
-        label="Favorite?"
+        label="favorite?"
         checked={formInput.favorite}
         onChange={(e) => {
           setFormInput((prevState) => ({
             ...prevState,
-            sale: e.target.checked,
+            favorite: e.target.checked,
           }));
         }}
       />
