@@ -13,7 +13,7 @@ const initialState = {
   image: '',
   favorite: false,
   title: '',
-  category: 0,
+  category: {},
 };
 
 function MangaForm({ obj }) {
@@ -93,10 +93,10 @@ function MangaForm({ obj }) {
           {
             categories.map((category) => (
               <option
-                key={category.id}
-                value={category.id}
+                key={category.firebaseKey}
+                value={category.firebaseKey}
               >
-                {category.label}
+                {category.category}
               </option>
             ))
           }
