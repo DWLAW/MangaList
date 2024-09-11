@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { deleteManga } from '../api/mangaData';
 
 function MangaCard({ mangaObj, onUpdate }) {
-  // FOR DELETE, WE NEED TO REMOVE THE Manga AND HAVE THE VIEW RERENDER,
-  // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE MangaS
   const deleteThisManga = () => {
     if (window.confirm(`Delete ${mangaObj.title}?`)) {
       deleteManga(mangaObj.firebaseKey).then(() => onUpdate());
