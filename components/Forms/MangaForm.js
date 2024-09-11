@@ -5,8 +5,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createManga, updateManga } from '../../api/mangaData';
 import getCategories from '../../api/categoryData';
+import { createManga, updateManga } from '../../api/mangaData';
 
 const initialState = {
   description: '',

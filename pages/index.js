@@ -1,32 +1,29 @@
 import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-// import { useAuth } from '../utils/context/authContext';
-import { getManga } from '../api/mangaData';
 import MangaCard from '../components/MangaCard';
+import { getManga } from '../api/mangaData';
 
 function Home() {
   const [mangas, setManga] = useState([]);
 
-  // const { user } = useAuth();
-
-  const getAllManga = () => {
+  const getAllTheManga = () => {
     getManga().then(setManga);
   };
 
   useEffect(() => {
-    getAllManga();
+    getAllTheManga();
   });
 
   return (
     <div className="text-center my-4">
-      <Link href="/book/new" passHref>
+      <Link href="/manga/new" passHref>
         <Button>Add A Manga</Button>
       </Link>
       <div className="d-flex flex-wrap">
 
         {mangas.map((manga) => (
-          <MangaCard key={manga.firebaseKey} mangaObj={manga} onUpdate={getAllManga} />
+          <MangaCard key={manga.firebaseKey} mangaObj={manga} onUpdate={getAllTheManga} />
         ))}
       </div>
 
