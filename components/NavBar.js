@@ -20,10 +20,7 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
-            </Link>
-            <Link passHref href="/manga/new.">
+            <Link passHref href="/manga/new">
               <Nav.Link>Post Manga</Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>

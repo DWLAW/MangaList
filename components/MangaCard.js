@@ -23,7 +23,7 @@ function MangaCard({ mangaObj, onUpdate }) {
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         {/* DYNAMIC LINK TO EDIT THE Manga DETAILS  */}
-        <Link href={`/Manga/edit/${mangaObj.firebaseKey}`} passHref>
+        <Link href={`/manga/edit/${mangaObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisManga} className="m-2">
