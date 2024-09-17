@@ -2,15 +2,13 @@ import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import MangaCard from '../components/MangaCard';
-import { getManga } from '../api/mangaData';
-import { useAuth } from '../utils/context/authContext';
+import { getEveryManga } from '../api/mangaData';
 
 function Home() {
   const [mangas, setManga] = useState([]);
-  const { user } = useAuth();
 
   const getAllTheManga = () => {
-    getManga(user.uid).then(setManga);
+    getEveryManga().then(setManga);
   };
 
   useEffect(() => {

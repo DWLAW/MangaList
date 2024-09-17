@@ -19,7 +19,7 @@ function MangaCard({ mangaObj, onUpdate }) {
         <Card.Title>{mangaObj.title}</Card.Title>
 
         {/* DYNAMIC LINK TO VIEW THE Manga DETAILS  */}
-        <Link href={`/Manga/${mangaObj.firebaseKey}`} passHref>
+        <Link href={`/manga/${mangaObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         {/* DYNAMIC LINK TO EDIT THE Manga DETAILS  */}

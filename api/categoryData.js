@@ -13,5 +13,19 @@ const getCategories = () => new Promise((resolve, reject) => {
     .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
+const getSingleCategory = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/categories/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
 
-export default getCategories;
+export {
+  getCategories,
+  getSingleCategory,
+};
