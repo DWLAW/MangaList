@@ -23,6 +23,9 @@ export default function NavBar() {
             <Link passHref href="/manga/new">
               <Nav.Link>Post Manga</Nav.Link>
             </Link>
+            <Link passHref href="/allmanga">
+              <Nav.Link>All Manga</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
