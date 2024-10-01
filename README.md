@@ -1,5 +1,5 @@
 # Overview
-Welcome to MangaList, your go-to app for tracking and organizing your manga reading journey! Whether you're a seasoned manga enthusiast or just starting out, MangaList makes it easy to manage your collection, discover new titles, and connect with fellow fans.
+Welcome to MangaList, your go-to app for tracking and organizing your manga reading journey! Whether you're a seasoned manga enthusiast or just starting out, MangaList makes it easy to manage your collection.
 
 ## Features
 Create posts about the manga in your collection and easily log the manga you own, are currently reading
