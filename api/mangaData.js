@@ -74,7 +74,7 @@ const updateManga = (payload) => new Promise((resolve, reject) => {
 });
 
 const getMangaByCategory = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/manga.json?orderBy="category_id"&equalTo="${firebaseKey}"`, {
+  fetch(`${endpoint}/manga.json?orderBy="category"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -99,8 +99,16 @@ const favoriteManga = (uid) => new Promise((resolve, reject) => {
     })
     .catch(reject);
 });
+const searchManga = (searchValue) => new Promise((resolve, reject) => {
+  getManga().then((mangas) => {
+    const filteredManga = mangas.filter((manga) => manga.title.toLowerCase().includes(searchValue.toLowerCase()) || manga.category.toLowerCase().includes(searchValue.toLowerCase()));
+    resolve(filteredManga);
+  })
+    .catch(reject);
+});
 
 export {
+  searchManga,
   getManga,
   createManga,
   favoriteManga,

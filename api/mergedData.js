@@ -1,4 +1,5 @@
 import { getSingleCategory } from './categoryData';
+import { getCommentsByMangaId } from './commentData';
 import { getSingleManga } from './mangaData';
 
 const viewMangaDetails = (mangaFirebaseKey) => new Promise((resolve, reject) => {
@@ -11,4 +12,14 @@ const viewMangaDetails = (mangaFirebaseKey) => new Promise((resolve, reject) => 
     }).catch((error) => reject(error));
 });
 
-export default viewMangaDetails;
+const viewMangaComments = (mangaFirebaseKey) => new Promise((resolve, reject) => {
+  getSingleManga(mangaFirebaseKey)
+    .then((mangaObject) => {
+      getCommentsByMangaId(mangaObject.comments)
+        .then((commentsObject) => {
+          resolve({ commentsObject, ...mangaObject });
+        });
+    }).catch((error) => reject(error));
+});
+
+export { viewMangaComments, viewMangaDetails };

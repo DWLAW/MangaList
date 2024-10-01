@@ -16,8 +16,8 @@ const getComments = () => new Promise((resolve, reject) => {
 });
 
 // GET COMMENTS BY POST ID
-const getCommentsByPostId = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments?post_id=${id}`, {
+const getCommentsByMangaId = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/comments?manga_id=${firebaseKey}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -42,8 +42,8 @@ const getCommentsForSingleUser = (uid) => new Promise((resolve, reject) => {
 });
 
 // GET A SINGLE COMMENT
-const getSingleComment = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments/${id}`, {
+const getSingleComment = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/comments/${firebaseKey}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -55,8 +55,8 @@ const getSingleComment = (id) => new Promise((resolve, reject) => {
 });
 
 // CREATE COMMENT
-const createComment = (userId, postId, comment) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/posts/${postId}/post_comments`, {
+const createComment = (userId, firebaseKey, comment) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/manga/${firebaseKey}/manga_comments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ const createComment = (userId, postId, comment) => new Promise((resolve, reject)
 
 // UPDATE COMMENT
 const updateComment = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments/${payload.id}`, {
+  fetch(`${endpoint}/comments/${payload.firebaseKey}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -86,8 +86,8 @@ const updateComment = (payload) => new Promise((resolve, reject) => {
 });
 
 // DELETE COMMENT
-const deleteComment = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments/${id}`, {
+const deleteComment = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/comments/${firebaseKey}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -99,5 +99,5 @@ const deleteComment = (id) => new Promise((resolve, reject) => {
 });
 
 export {
-  getComments, getCommentsByPostId, getCommentsForSingleUser, getSingleComment, createComment, updateComment, deleteComment,
+  getComments, getCommentsByMangaId, getCommentsForSingleUser, getSingleComment, createComment, updateComment, deleteComment,
 };

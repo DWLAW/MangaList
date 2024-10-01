@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteManga } from '../../api/mangaData';
-// import { getCommentsByMangaId } from '../../api/commentData';
 // import CommentCard from '../../components/CommentCard';
 // import CommentForm from '../../components/Forms/CommentForm';
 import { useAuth } from '../../utils/context/authContext';
-import viewMangaDetails from '../../api/mergedData';
+import { viewMangaDetails } from '../../api/mergedData';
+// import CommentForm from '../../components/Forms/CommentForm';
+// import { getCommentsByMangaId } from '../../api/commentData';
 
 const initialState = {
   title: '',
@@ -40,6 +41,7 @@ export default function ViewManga(onUpdate) {
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
+        {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img src={mangaDetails.image} alt={mangaDetails.title} style={{ width: '400px', maxHeight: '600px', marginBottom: '10px' }} />
         {user.uid === mangaDetails.user?.uid ? (
           <Link href={`/manga/edit/${firebaseKey}`} passHref>
@@ -52,16 +54,17 @@ export default function ViewManga(onUpdate) {
         <h3>{mangaDetails.title}</h3>
         <h5>Category: {mangaDetails.categoryObject?.category}</h5>
         <p>Description: {mangaDetails.description}</p>
+        <p>{mangaDetails?.favorite ? ' 🤍' : ''}</p>
         {/* <div>
           <p>Comments:</p>
           {comments.map((comment) => (
-            <CommentCard key={comment.id} commentObj={comment} onUpdate={getCommentsBymanga} />
+            <CommentCard key={comment.firebaseKey} commentObj={comment} onUpdate={getCommentsByMangaId} />
           ))}
           <Accordion style={{ width: '400px', margin: '15px', backgroundColor: 'black' }} flush>
             <Accordion.Item eventKey="0">
               <Accordion.Header><h5 style={{ color: 'black' }}>Leave a Comment</h5></Accordion.Header>
               <Accordion.Body>
-                <CommentForm commentmangaId={firebaseKey} onSubmit={getCommentsBymanga} />
+                <CommentForm commentmangaId={firebaseKey} onSubmit={getCommentsByMangaId} />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
