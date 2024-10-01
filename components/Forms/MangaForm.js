@@ -5,8 +5,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import getCategories from '../../api/categoryData';
 import { createManga, updateManga } from '../../api/mangaData';
+import { getCategories } from '../../api/categoryData';
 
 const initialState = {
   description: '',
@@ -49,7 +49,7 @@ function MangaForm({ obj }) {
     // if the event does not happen default action should not be taken
     if (obj.firebaseKey) {
       // checks obj for firebasekey
-      updateManga(formInput).then(() => router.push('/'));
+      updateManga(formInput).then(() => router.push(`/manga/${obj.firebaseKey}`));
       // calls updateManga function and then routes to that manga's info in the form
     } else {
       const payload = { ...formInput, uid: user.uid };
@@ -58,7 +58,7 @@ function MangaForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         // this updates the new manga with the firebasekey
         updateManga(patchPayload).then(() => {
-          router.push('/');
+          router.push(`${obj.firebaseKey}`);
           // routes to homepage
         });
       });
