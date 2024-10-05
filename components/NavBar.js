@@ -23,6 +23,15 @@ export default function NavBar() {
             <Link passHref href="/manga/new">
               <Nav.Link>Post Manga</Nav.Link>
             </Link>
+            <Link passHref href="/Finished">
+              <Nav.Link>Finished</Nav.Link>
+            </Link>
+            <Link passHref href="/Reading">
+              <Nav.Link>Reading</Nav.Link>
+            </Link>
+            <Link passHref href="/ToRead">
+              <Nav.Link>To Read</Nav.Link>
+            </Link>
             <Link passHref href="/allmanga">
               <Nav.Link>All Manga</Nav.Link>
             </Link>
